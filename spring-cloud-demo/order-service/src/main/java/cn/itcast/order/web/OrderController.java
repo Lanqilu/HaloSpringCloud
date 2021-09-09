@@ -17,7 +17,7 @@ public class OrderController {
 
     @GetMapping("{orderId}")
     public Order queryOrderByUserId(@PathVariable("orderId") Long orderId) {
-        // 根据id查询订单并返回
+        // 根据 id 查询订单并返回
         return orderService.queryOrderById(orderId);
     }
 }
