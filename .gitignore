@@ -1,7 +1,4 @@
 # 项目排除路径
-/spring-cloud-demo/order-service/target/
-/spring-cloud-demo/user-service/target/
-
-.idea
-
+.idea/
+target/
 *.iml
