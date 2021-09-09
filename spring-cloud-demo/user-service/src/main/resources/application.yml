@@ -8,11 +8,6 @@ spring:
     username: root
     password: mogu2018
     driver-class-name: com.mysql.jdbc.Driver
-  cloud:
-    nacos:
-      server-addr: halo:8848
-      discovery:
-        cluster-name: HZ # 集群名称
 mybatis:
   type-aliases-package: cn.itcast.user.pojo
   configuration:
