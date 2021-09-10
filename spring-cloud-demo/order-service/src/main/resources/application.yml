@@ -30,3 +30,8 @@ ribbon:
 user-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule # 负载均衡规则
+feign:
+  httpclient:
+    enabled: true # 开启 feign 对 HttpClient 的支持
+    max-connections: 200 # 最大的连接数
+    max-connections-per-route: 50 # 每个路径的最大连接数
