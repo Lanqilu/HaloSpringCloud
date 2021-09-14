@@ -45,8 +45,15 @@ public class UserController {
      */
     @GetMapping("/{id}")
     public User queryById(@PathVariable("id") Long id,
-                          @RequestHeader(value = "Truth", required = false) String truth) {
+                          @RequestHeader(value = "Truth", required = false) String truth) throws InterruptedException {
         System.out.println("truth = " + truth);
+
+        if (id == 1) {
+            // id 为 1 时触发慢调用
+            Thread.sleep(100);
+        } else if (id == 2) {
+            throw new RuntimeException("故意出错，触发熔断");
+        }
         return userService.queryById(id);
     }
 }

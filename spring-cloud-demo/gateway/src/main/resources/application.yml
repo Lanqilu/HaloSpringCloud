@@ -5,7 +5,7 @@ spring:
     name: gateway # 服务名称
   cloud:
     nacos:
-      server-addr: halo:8848 # nacos地址
+      server-addr: nacos:8848 # nacos地址
       discovery:
         cluster-name: HZ
         namespace: 45e30304-1b64-4c21-8c83-22309949af10 # 命名空间，填ID
@@ -23,3 +23,19 @@ spring:
             - Before=2037-01-20T17:42:47.789-07:00[America/Denver]
       default-filters: # 默认过滤项
         - AddRequestHeader=Truth, Halo
+        - AddRequestHeader=origin, gateway
+      globalcors: # 全局的跨域处理
+        add-to-simple-url-handler-mapping: true # 解决options请求被拦截问题
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: # 允许哪些网站的跨域请求
+              - "http://localhost:5500"
+            allowedMethods: # 允许的跨域ajax的请求方式
+              - "GET"
+              - "POST"
+              - "DELETE"
+              - "PUT"
+              - "OPTIONS"
+            allowedHeaders: "*" # 允许在请求中携带的头信息
+            allowCredentials: true # 是否允许携带cookie
+            maxAge: 360000 # 这次跨域检测的有效期

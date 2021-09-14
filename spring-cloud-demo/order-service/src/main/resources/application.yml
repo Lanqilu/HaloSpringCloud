@@ -9,8 +9,25 @@ spring:
   application:
     name: order-service
   cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8090
+      web-context-unify: false # 关闭 context 整合
+      datasource:
+        flow:
+          nacos:
+            server-addr: halo:8848 # nacos地址
+            dataId: orderservice-flow-rules
+            groupId: SENTINEL_GROUP
+            rule-type: flow # 还可以是：degrade、authority、param-flow
+        degrade:
+          nacos:
+            server-addr: halo:8848 # nacos地址
+            dataId: orderservice-degrade-rules
+            groupId: SENTINEL_GROUP
+            rule-type: degrade # 还可以是：degrade、authority、param-flow
     nacos:
-      server-addr: halo:8848
+      server-addr: nacos:8848
       discovery:
         cluster-name: HZ
         namespace: 45e30304-1b64-4c21-8c83-22309949af10 # 命名空间，填ID
@@ -31,6 +48,8 @@ user-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule # 负载均衡规则
 feign:
+  sentinel:
+    enabled: true # 开启 feign 对 sentinel 支持
   httpclient:
     enabled: true # 开启 feign 对 HttpClient 的支持
     max-connections: 200 # 最大的连接数
