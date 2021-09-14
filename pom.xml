@@ -9,6 +9,7 @@
     <version>1.0</version>
     <modules>
         <module>spring-cloud-demo</module>
+        <module>seata-demo</module>
     </modules>
 
     <packaging>pom</packaging>
