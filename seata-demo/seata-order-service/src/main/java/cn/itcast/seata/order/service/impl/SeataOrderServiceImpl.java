@@ -6,6 +6,7 @@ import cn.itcast.seata.order.entity.SeataOrder;
 import cn.itcast.seata.order.mapper.SeataOrderMapper;
 import cn.itcast.seata.order.service.SeataOrderService;
 import feign.FeignException;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +29,7 @@ public class SeataOrderServiceImpl implements SeataOrderService {
     }
 
     @Override
-    @Transactional
+    @GlobalTransactional
     public Long create(SeataOrder order) {
         // 创建订单
         orderMapper.insert(order);

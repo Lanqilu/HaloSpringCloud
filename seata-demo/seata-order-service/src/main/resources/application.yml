@@ -23,3 +23,18 @@ logging:
     cn.itcast: debug
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
+seata:
+  data-source-proxy-mode: XA # 开启数据源代理的XA模式
+  registry:
+    type: nacos
+    nacos: # tc
+      server-addr: nacos:8848
+      namespace: "45e30304-1b64-4c21-8c83-22309949af10"
+      group: DEFAULT_GROUP
+      application: seata-tc-server # TC 服务在 nacos 中的服务名称
+      username: nacos
+      password: nacos
+  tx-service-group: seata-demo # 事务组，根据这个获取 TC 服务的 cluster 名称
+  service:
+    vgroup-mapping: # 事务组与 TC 服务 cluster 的映射关系
+      seata-demo: HZ
