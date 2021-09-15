@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8084
 spring:
   application:
     name: seata-order-service
@@ -24,7 +24,7 @@ logging:
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
 seata:
-  data-source-proxy-mode: XA # 开启数据源代理的XA模式
+  data-source-proxy-mode: AT # 开启数据源代理的XA模式
   registry:
     type: nacos
     nacos: # tc

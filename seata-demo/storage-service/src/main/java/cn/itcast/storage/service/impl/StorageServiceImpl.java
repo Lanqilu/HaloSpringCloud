@@ -2,6 +2,7 @@ package cn.itcast.storage.service.impl;
 
 import cn.itcast.storage.mapper.StorageMapper;
 import cn.itcast.storage.service.StorageService;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class StorageServiceImpl implements StorageService {
     @Autowired
     private StorageMapper storageMapper;
 
-    @Transactional
+    @GlobalTransactional
     @Override
     public void deduct(String commodityCode, int count) {
         log.info("开始扣减库存");

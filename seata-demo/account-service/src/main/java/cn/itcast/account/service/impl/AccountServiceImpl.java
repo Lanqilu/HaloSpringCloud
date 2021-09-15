@@ -2,6 +2,7 @@ package cn.itcast.account.service.impl;
 
 import cn.itcast.account.mapper.AccountMapper;
 import cn.itcast.account.service.AccountService;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class AccountServiceImpl implements AccountService {
     private AccountMapper accountMapper;
 
     @Override
-    @Transactional
+    @GlobalTransactional
     public void deduct(String userId, int money) {
         log.info("开始扣款");
         try {
