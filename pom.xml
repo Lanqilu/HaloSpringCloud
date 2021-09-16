@@ -10,6 +10,7 @@
     <modules>
         <module>spring-cloud-demo</module>
         <module>seata-demo</module>
+        <module>redis-demo</module>
     </modules>
 
     <packaging>pom</packaging>
